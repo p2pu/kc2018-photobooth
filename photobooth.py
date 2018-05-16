@@ -21,6 +21,7 @@ else:
 
 camera.resolution = (1024, 768)
 camera.start_preview()
+camera.vflip = True
 camera.annotate_text_size = 70
 
 def quit():
@@ -86,7 +87,7 @@ while True:
     logger.info("waiting for button press")
     button.wait_for_press()
     logger.info("button pressed")
-    photos = capture_photos(4)
+    photos = capture_photos(1)
     if twitter:
         logger.info("twitter enabled")
         camera.annotate_text = text['tweeting with cancel']
