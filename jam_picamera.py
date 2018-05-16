@@ -27,13 +27,13 @@ class JamPiCamera(PiCamera):
     def start_preview(self):
         pad = Image.new('RGB', _pad(self.resolution))
         pad.paste(overlay, (0, 0))
-        self.add_overlay(pad.tobytes(), alpha=50, layer=3)
+        self.add_overlay(pad.tobytes(), alpha=70, layer=3)
         super(JamPiCamera, self).start_preview()
 
     def capture(self):
         output = _gen_filename()
         super(JamPiCamera, self).capture(output)
-        output_img = Image.open(output).convert('RGBA')
-        new_output = Image.alpha_composite(output_img, overlay)
-        new_output.save(output)
+        #output_img = Image.open(output).convert('RGBA')
+        #new_output = Image.alpha_composite(output_img, overlay)
+        #new_output.save(output)
         return output
