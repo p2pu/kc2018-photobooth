@@ -25,9 +25,9 @@ def _gen_filename():
 
 class JamPiCamera(PiCamera):
     def start_preview(self):
-        pad = Image.new('RGB', _pad(self.resolution))
+        pad = Image.new('RGBA', _pad(self.resolution))
         pad.paste(overlay, (0, 0))
-        self.add_overlay(pad.tobytes(), alpha=70, layer=3)
+        self.add_overlay(pad.tobytes(), layer=3)
         super(JamPiCamera, self).start_preview()
 
     def capture(self):
